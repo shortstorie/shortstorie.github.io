@@ -14,9 +14,11 @@
           var marker = document.querySelector("#marker");
           var fullbutton = document.querySelector("#fullscreen");
           var Video_0 = document.querySelector("#Video_Asset_0");
+          var Video_1 = document.querySelector("#Video_Asset_1");
           var button = document.querySelector("#mutebutton");
           button.hidden = true;
-          Video_0.pause();
+		  Video_0.pause();
+          Video_1.pause();
 
           marker.addEventListener("markerFound", function (evt) {
             markerFound = 1;
@@ -28,20 +30,25 @@
           marker.addEventListener("markerLost", function (evt) {
             markerFound = 0;
             Video_0.pause();
+            Video_1.pause();
             button.hidden = true;
           });
 
           // button for video play/pause
           button.addEventListener("click", function(evt){
             console.log("button clicked")
-            if(Video_0.muted==true){
+            if(Video_0.muted==true and Video_1.muted==true){
               button.innerHTML="Pause";
               Video_0.muted=false;
+              Video_1.muted=false;
               Video_0.play();
+              Video_1.play();
             }else{
               button.innerHTML="Play";
               Video_0.muted=true;
+              Video_1.muted=true;
               Video_0.pause();
+              Video_1.pause();
             }
           });
 
