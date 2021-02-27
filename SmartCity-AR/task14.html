@@ -7,11 +7,13 @@
   <!-- this part defines the playback / control function and events -->
   <script>
     var markerFound = 0;
+    var marker2Found = 0;
     AFRAME.registerComponent('button', {
         init: function ()
         {
           var elem = document.documentElement;
           var marker = document.querySelector("#marker");
+          var marker2 = document.querySelector("#marker2");
           var fullbutton = document.querySelector("#fullscreen");
           var Video_0 = document.querySelector("#Video_Asset_0");
           var Video_1 = document.querySelector("#Video_Asset_1");
@@ -30,6 +32,18 @@
           marker.addEventListener("markerLost", function (evt) {
             markerFound = 0;
             Video_0.pause();
+            button.hidden = true;
+          });
+		  
+		  marker2.addEventListener("markerFound", function (evt) {
+            marker2Found = 1;
+            button.hidden = false;
+            // Video_0.play();  // if you want the video 
+            // to start immediently on marker detection, uncomment this
+          });
+
+          marker2.addEventListener("markerLost", function (evt) {
+            marker2Found = 0;
             Video_1.pause();
             button.hidden = true;
           });
@@ -110,7 +124,7 @@
     <a-marker id="marker" preset="hiro" emitevents="true" button>
       <a-video src="#Video_Asset_0" id="Video_0" class="intersectable" position="0 0 0" rotation="-90 0 0" transparent=False></a-video>
     </a-marker>
-    <a-marker id="marker" preset="kanji" emitevents="true" button>
+    <a-marker id="marker2" preset="kanji" emitevents="true" button>
       <a-video src="#Video_Asset_1" id="Video_1" class="intersectable" position="0 0 0" rotation="-90 0 0" transparent=False></a-video>
     </a-marker>
     <a-entity camera></a-entity>
