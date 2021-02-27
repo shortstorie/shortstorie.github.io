@@ -8,11 +8,7 @@
         <a-scene embedded arjs>
             <!-- handle hiro marker -->
             <a-marker preset='hiro'>
-                <a-text look-at="[gps-camera]" value="Hello World" color="yellow" rotation="0 0 90" scale="7, 7"
-						position="-2.5 4 0"
-						z-offset="3"
-						faceUser: true;>
-					</a-text>
+                <a-text value="Hello World" geometry="primitive:plane" scale="150 100 50" ></a-text>
             </a-marker>
 
             <!-- add a camera to the scene that renders the objects for us -->
