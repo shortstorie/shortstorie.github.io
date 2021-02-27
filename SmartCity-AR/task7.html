@@ -7,6 +7,7 @@
     <body style="margin : 0px; overflow: hidden;">
         <a-scene embedded arjs>
             <a-assets>
+				<audio id="helmet_sound" src="assets/warningshotremix.mp3" response-type="arraybuffer" autoplay="true" loop></audio>
                 <video id="video1" autoplay loop="true" src="assets/nyhl.mp4"></video>
                 <a-asset-item id="helmet" src="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/KhronosGroup/glTF-Sample-Models/master/2.0/SciFiHelmet/glTF/SciFiHelmet.gltf"></a-asset-item>
             </a-assets>
@@ -24,7 +25,8 @@
                 </a-entity>
 
                 <!-- second entity: reference to the above video -->
-                <a-video src="#video1" width="16" height="9" position="0 0 5"></a-video>
+				<a-entity sound="src: #helmet_sound; volume: 1; loop: true">
+					<a-video src="#video1" width="16" height="9" position="0 0 5"></a-video>
                 </a-entity>
             </a-marker>
 
